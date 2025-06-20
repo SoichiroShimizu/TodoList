@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= todo.body %></title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1><%= todo.body %></h1>
+    <a href="/todos">一覧に戻る</a>
+    <a href="/todos/<%= todo._id %>/edit">編集</a>
+    <form action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
+        <button>削除</button>
+    </form>
+</body>
+</html>

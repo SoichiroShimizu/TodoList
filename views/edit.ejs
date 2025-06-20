@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todoの編集</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>Todoの編集</h1>
+    <form action="/todos/<%= todo._id %>/edit?_method=PUT" method="POST">
+        <label for="body">TODO</label>
+        <input type="text" id="body" name="body" placeholder="Todo名" value="<%= todo.body %>">
+        <button>編集する</button>
+    </form>
+    <a href="/">ホームに戻る</a>
+</body>
+</html>
