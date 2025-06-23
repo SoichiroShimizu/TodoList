@@ -9,64 +9,70 @@
 </head>
 
 <body>
-        <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-        <script src="../js/dateFormat.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded',function(){
-                new Sortable(document.getElementById('yet-list'),{
-                    animation: 150
-                });
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="../js/dateFormat.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Sortable(document.getElementById('yet-list'), {
+                animation: 150
             });
-        </script>
-        <script>
-            document.addEventListener('DOMContentLoaded',function(){
-                new Sortable(document.getElementById('done-list'),{
-                    animation: 150
-                });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Sortable(document.getElementById('done-list'), {
+                animation: 150
             });
-        </script>
-    <% 
-        const yet = [];
-        const done = [];
-        for(let todo of todos){
-        if(todo.done === false){
-            yet.push(todo);
-        }else{
-            done.push(todo);
-        }}%>
-    <div class="container">
-    <h1>Todo一覧</h1>
-    <div class="todo-lists-row">
-      <div class="todo-list-block">
-        <h2>未完了のTodo</h2>
-        <ul id="yet-list" style="list-style: none; padding: 0;">
-            <% for(let todo of yet) { %>
-                <li style="display: flex; align-items: center; gap: 8px; border: 1px solid #ccc; padding: 8px; margin-bottom: 8px;">
-                    <a href="/todos/<%= todo._id %>"><%= todo.body %></a><%= formatDateToJapanese(todo.deadLine) %>
-                    <form action="/todos/<%= todo._id %>?_method=PUT" method="POST" style="margin: 0;">
-                        <button>完了</button>
-                    </form>
-                </li>
-            <% } %>
-        </ul>
-      </div>
-      <div class="todo-list-block">
-        <h2>完了したTodo</h2>
-        <ul id="done-list" style="list-style: none; padding: 0;">
-            <% for(let todo of done) { %>
-                <li style="display: flex; align-items: center; gap: 8px; border: 1px solid #ccc; padding: 8px; margin-bottom: 8px;">
-                    <a href="/todos/<%= todo._id %>"><%= todo.body %></a>
-                    <form action="/todos/<%= todo._id %>?_method=PUT" method="POST" style="margin: 0;">
-                        <button>未完了に戻す</button>
-                    </form>
-                </li>
-            <% } %>
-        </ul>
-      </div>
-    </div>
-    <a href="/">ホームに戻る</a>
-    <a href="/todos/new">Todoを追加する</a>
-    </div>
+        });
+    </script>
+    <% const yet=[]; const done=[]; for(let todo of todos){ if(todo.done===false){ yet.push(todo); }else{
+        done.push(todo); }}%>
+        <div class="container">
+            <h1>Todo一覧</h1>
+            <div class="todo-lists-row">
+                <!-- 未完了のTodo -->
+                <div class="todo-list-block">
+                    <h2>未完了のTodo</h2>
+                    <div class="todo-list-scroll">
+                        <ul id="yet-list" style="list-style: none; padding: 0; margin: 0;">
+                            <% for(let todo of yet) { %>
+                                <li
+                                    style="display: flex; align-items: center; gap: 8px; border: 1px solid #ccc; padding: 8px; margin-bottom: 8px;">
+                                    <a href="/todos/<%= todo._id %>">
+                                        <%= todo.body %>
+                                    </a>
+                                    <%= formatDateToJapanese(todo.deadLine) %>
+                                        <form action="/todos/<%= todo._id %>?_method=PUT" method="POST" style="margin: 0;">
+                                            <button>完了</button>
+                                        </form>
+                                </li>
+                                <% } %>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 完了したTodo -->
+                <div class="todo-list-block">
+                    <h2>完了したTodo</h2>
+                    <div class="todo-list-scroll">
+                        <ul id="done-list" style="list-style: none; padding: 0; margin: 0;">
+                            <% for(let todo of done) { %>
+                                <li
+                                    style="display: flex; align-items: center; gap: 8px; border: 1px solid #ccc; padding: 5px; margin-bottom: 5px;">
+                                    <a href="/todos/<%= todo._id %>">
+                                        <%= todo.body %>
+                                    </a>
+                                    <form action="/todos/<%= todo._id %>?_method=PUT" method="POST" style="margin: 0;">
+                                        <button>未完了に戻す</button>
+                                    </form>
+                                </li>
+                                <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a href="/">ホームに戻る</a>
+            <a href="/todos/new">Todoを追加する</a>
+        </div>
 </body>
 
 </html>

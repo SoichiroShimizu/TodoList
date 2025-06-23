@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="container">
     <h1><%= todo.body %></h1>
     <a href="/todos">一覧に戻る</a>
     <a href="/todos/<%= todo._id %>/edit">編集</a>
     <form action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
         <button>削除</button>
     </form>
+    </div>
 </body>
 </html>

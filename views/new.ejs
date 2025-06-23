@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todoの新規登録</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <div class="container">
-    <h1>Todoの新規登録</h1>
-    <form action="/todos" method="POST">
-        <label for="body">TODO</label>
-        <input type="text" id="body" name="body" placeholder="Todo名" required>
-        <input type="datetime-local" name="deadline" id="deadline">
-        <button>追加する</button>
-    </form>
+        <h1>Todoの新規登録</h1>
+        <div class="form-all">
+        <form action="/todos" method="POST">
+            <div class="todo-form">
+            <label for="body" class="form-label">TODO</label>
+            <input type="text" id="body" name="body" placeholder="Todoを入力してください" required>
+            </div>
+            <div class="todo-deadline">
+            <label for="deadline" class="form-label">締切</label>
+            <input type="datetime-local" name="deadline" id="deadline">
+            </div>
+            <button>追加する</button>
+        </form>
+    </div>
     <a href="/">ホームに戻る</a>
     </div>
 </body>
+
 </html>

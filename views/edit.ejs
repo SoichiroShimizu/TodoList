@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="container">
     <h1>Todoの編集</h1>
     <form action="/todos/<%= todo._id %>/edit?_method=PUT" method="POST">
         <label for="body">TODO</label>
@@ -14,5 +15,6 @@
         <button>編集する</button>
     </form>
     <a href="/">ホームに戻る</a>
+    </div>
 </body>
 </html>
